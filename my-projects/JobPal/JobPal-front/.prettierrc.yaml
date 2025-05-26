@@ -1,0 +1,12 @@
+## (参考)import自動整理：https://github.com/trivago/prettier-plugin-sort-imports
+## 全体整形コマンド
+# npx prettier --write "./**/*.{ts,tsx}"
+tabWidth: 2
+printWidth: 120
+singleAttributePerLine: false
+singleQuote: true
+jsxSingleQuote: false
+importOrder: ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"]
+importOrderSeparation: true
+importOrderSortSpecifiers: true
+endOfLine: "lf"

@@ -1,0 +1,40 @@
+{
+  "recommendations": [
+    // Base
+    "MS-CEINTL.vscode-language-pack-ja",
+    "esbenp.prettier-vscode",
+    "oderwat.indent-rainbow",
+    "vscode-icons-team.vscode-icons",
+    "aaron-bond.better-comments",
+    "mosapride.zenkaku",
+
+    // HTML
+    "ritwickdey.LiveServer",
+    "ecmel.vscode-html-css",
+    "smelukov.vscode-csstree",
+    "Zignd.html-css-class-completion",
+    "formulahendry.auto-rename-tag",
+    "pranaygp.vscode-css-peek",
+
+    // SQL
+    "inferrinizzard.prettier-sql-vscode",
+    "cweijan.vscode-postgresql-client2",
+
+    // Java
+    "vscjava.vscode-java-pack",
+    "vmware.vscode-boot-dev-pack",
+
+    // Git
+    "mhutchie.git-graph",
+
+    // React
+    "mikestead.dotenv",
+    "dsznajder.es7-react-js-snippets",
+    "christian-kohler.npm-intellisense",
+    "burkeholland.simple-react-snippets"
+
+    // AI
+    // "TabNine.tabnine-vscode"
+    // "GitHub.copilot"
+  ]
+}
