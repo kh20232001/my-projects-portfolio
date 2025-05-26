@@ -10,4 +10,5 @@
 
 ## MetaMoo紹介映像
 - 説明：メタバース用のアプリケーション紹介映像
-- GitHub上に挙げることができなかったため添付ファイルに追加しました。
+- GitHub上に挙げることができなかったためgoogledriveで上げさせていただきます。
+- 動画リンク：https://drive.google.com/file/d/14IHW81Wv7CwxpcVkkjttH8C1qrz50tFe/view?usp=sharing
