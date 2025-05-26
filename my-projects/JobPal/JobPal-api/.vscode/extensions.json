@@ -1,0 +1,30 @@
+{
+    "recommendations": [
+        // Base
+        "MS-CEINTL.vscode-language-pack-ja",
+        "esbenp.prettier-vscode",
+        "oderwat.indent-rainbow",
+        "vscode-icons-team.vscode-icons",
+        "aaron-bond.better-comments",
+        "mosapride.zenkaku",
+
+        // SQL
+        "inferrinizzard.prettier-sql-vscode",
+        "cweijan.vscode-postgresql-client2",
+
+        // Java
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-boot-dev-pack",
+        "richardwillis.vscode-gradle-extension-pack",
+
+        // Git
+        "mhutchie.git-graph",
+
+        // Other
+        "Postman.postman-for-vscode"
+
+        // AI
+        // "TabNine.tabnine-vscode"
+        // "GitHub.copilot"
+    ]
+}

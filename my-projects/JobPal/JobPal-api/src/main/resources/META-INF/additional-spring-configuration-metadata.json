@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "allowed.origins",
+    "type": "java.lang.String",
+    "description": "許可する接続元をカンマ区切りで羅列する。"
+  },
+  {
+    "name": "settings.filename.task.csv",
+    "type": "java.lang.String",
+    "description": "タスクをCSV出力した際のファイル名を記載する。末尾に.csvを付与すること。"
+  },
+  {
+    "name": "settings.profiles.active",
+    "type": "java.lang.String",
+    "description": "現在の動作環境を記載する。『local』指定時は開発用機能が動作する。"
+  },
+  {
+    "name": "security.secret-key",
+    "type": "java.lang.String",
+    "description": "JWTトークン生成時のシークレットキーを指定する。"
+  }
+]}

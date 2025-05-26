@@ -1,0 +1,86 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.0'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'war'
+}
+
+group = 'com.api'
+version = '0.0.1-SNAPSHOT'
+description = 'metaverse-main-api'
+
+java {
+	sourceCompatibility = '21'
+
+}
+
+
+repositories {
+	mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+	// Spring
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// Utilities
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
+	implementation 'com.fasterxml.jackson.core:jackson-core'
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+	implementation group: 'org.apache.commons', name: 'commons-csv', version: '1.10.0'
+
+	// Database
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'com.h2database:h2'
+	implementation 'org.postgresql:postgresql'
+
+	// logging
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	implementation 'org.slf4j:slf4j-api'
+
+	// Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation group: 'com.auth0', name: 'java-jwt', version: '4.3.0'
+
+	// Guava
+	implementation 'com.google.guava:guava:31.0.1-jre'
+
+
+	// AWS
+	// implementation 'commons-fileupload:commons-fileupload:1.5'
+	// implementation 'com.amazonaws:aws-java-sdk-s3:1.12.649'
+
+	// Test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api'
+	testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+
+	// Custom
+	implementation group: 'org.junit', name: 'junit4-runner', version: '5.0.0-ALPHA'
+
+	// Develop Support
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// Tomcat
+  providedRuntime "org.springframework.boot:spring-boot-starter-tomcat"
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+
+}
+bootJar {
+    enabled = false
+}
+
+war {
+    enabled = true
+}
