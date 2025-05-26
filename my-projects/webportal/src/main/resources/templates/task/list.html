@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<link rel="stylesheet" th:href="@{/css/dojo.css}"
+	href="../static/css/dojo.css">
+
+<div th:replace="~{common :: common-script}"></div>
+<div th:replace="~{common :: common-head}"></div>
+
+<body>
+
+	<div th:replace="~{common :: common-nav}"></div>
+	<div class="container-fluid header-up">
+		<div class="row">
+			<nav th:replace="~{common :: common-sidebar}"></nav>
+
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<h1>タスク管理画面</h1>
+				<div class="row justify-content-md-center">
+					<div class="col-lg-11">
+						<h3>タスク登録</h3>
+						<div class="alert alert-warning" role="alert" th:if="${message}"
+							th:text="${message}"></div>
+						<div class="alert alert-danger" role="alert"
+							th:if="${errorMessage}" th:text="${errorMessage}"></div>
+						<div class="content-box">
+							<form method="post" th:action="@{/task/insert}">
+								<div>
+								 	<label for="title" class="form-label">タスク名*</label>
+									<input type="text" id="title" class="form-control" name="title" placeholder="タスク内容">
+									<div id="titleHelp" class="form-text">タスクの内容を具体的に記載してください</div>
+								</div>
+								<br>
+								<div>
+									<label for="date" class="form-label">期限日*</label>
+									<input type="datetime-local" id="date" class="form-control" name="limit">
+									<div id="dateHelp" class="form-text">タスクの期日を入力してください</div>
+								</div>	
+								<div>
+									<label for="date" class="form-label">優先度*</label>
+										<select id="priority" class="form-control" name="priority">
+										<option value="HIGH">高</option>
+										<option value="MIDDLE">中</option>
+										<option value="LOW">低</option>
+										</select>
+									<div id="dateHelp" class="form-text">優先度を入力してください</div>
+								</div>
+								<div>
+									<span class="d-flex justify-content-end">
+										<button id="submit" type="submit" class="btn btn-warning">追加</button>
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
+					
+					<div class="col-lg-11 margin-top">
+                        <div class="d-flex justify-content-between">
+                            <h3>タスク一覧</h3>
+                            <div class="input-group"  style="width: 10%; min-width: 200px">
+                                <span class="input-group-text">表示件数</span>
+                                <select class="form-control" name="displayCount" id="displayCount">
+                                    <option th:value="${pagenation}" th:text="'現在:'+${pagenation}"></option>
+                                    <option value="3">3</option>
+                                    <option value="5">5</option>
+                                    <option value="7">7</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                        </div>
+
+							<table class="table table-responsive">
+								<thead>
+									<tr>
+										<th style="width: 5%" scope="col">No</th>
+										<th style="width: 45%" scope="col">タスク</th>
+										<th style="width: 20%" scope="col">期限日</th>
+										<th style="width: 10%" scope="col">優先度</th>
+										<th style="width: 10%" scope="col"></th>
+										<th style="width: 10%" scope="col"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="task, sate : ${taskEntity.taskList}">
+										<td th:text="${sate.count} + (${taskEntity.now} - 1) * ${pagenation}">1</td>
+										<td th:text="${task.title}">タイトル</td>
+										<td th:text="${#dates.format(task.limitDay, 'yyyy-MM-dd HH:mm')}">2020-11-11T00:00:00</td>
+										<td th:if="${task.priority}" th:text="${task.priority}">2020/11/11</td>
+									
+										<td>
+											<form method="post" th:action="@{/task/delete}">
+												<input type="hidden" th:value="${task.id}" name="id" id="delete">
+												<button type="submit" class="btn btn-danger">削除</button>
+											</form>
+										</td>
+										<td>
+											<form method="post" th:action="@{/task/complate}" th:if="${!task.isComplate}">
+												<input type="hidden" th:value="${task.id}" name="id" id="complate">
+												<button type="submit" class="btn btn-primary">完了</button>
+											</form>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<form id="paginationForm" method="get" th:action="@{/task/pagenation}">
+                                <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                                    <ul class="pagination">
+                                        <li class="page-item"><a href="javascript:void(0);" class="page-link" onclick="displayCount('Previous')">Previous</a></li>
+                                        <li class="page-item"><a href="javascript:void(0);" class="page-link" id="nows" th:text="${taskEntity.now}" onclick="displayCount('now')">1</a></li>
+                                        <li class="page-item"><a href="javascript:void(0);" class="page-link" th:text="${taskEntity.now} + 1" onclick="displayCount('after')">2</a></li>
+                                        <li class="page-item"><a href="javascript:void(0);" class="page-link" th:text="${taskEntity.now} + 2" onclick="displayCount('afterSecond')">3</a></li>
+                                        <li class="page-item"><a href="javascript:void(0);" class="page-link" onclick="displayCount('Next')">Next</a></li>
+                                        <input type="hidden" value="postCount" name="postCount" id="postCount">
+                                        <input type="hidden" value="nowCount" name="nowCount" id="nowCount">
+                                    </ul>
+                                </nav>
+                            </form>
+
+							<form class="d-flex justify-content-end" method="post" th:action="@{/task/csv}">
+								<button type="submit" class="btn btn-success btnx-lime">CSV出力</button>
+							</form>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+	<script th:src="@{/js/task.js}" src="../static/js/task.js"></script>
+</body>
+</html>

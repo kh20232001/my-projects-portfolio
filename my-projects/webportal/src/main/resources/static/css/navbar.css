@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/*
+ ナビゲーションヘッダーのCSS設定を記載.
+ */
+ 
+/* ナビゲーションヘッダー上部重なり防止 */
+.header-up {
+	padding-top: 5rem;
+}
+
+/* ナビゲーションのアイテム間隔 */
+.nav-item {
+	margin-left: 32px;
+}
+
+/* サイト名 */
+.title-font {
+	font-size: 2rem;
+}
+
+/* サイトロゴイメージ */
+.logo-img {
+	margin: 0px 10px 0px 5px;
+	width: 40px;
+}
+
+/* プロフィールアイコンのイメージ */
+.config-img {
+	margin: 0 10px;
+	width: 20px;
+}
+
+/* ナビゲーションバーの重なりを指定 */
+.navbar {
+	z-index: 1000;
+}

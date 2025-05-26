@@ -1,0 +1,49 @@
+@charset "UTF-8";
+/*
+ アルゴリズム道場のCSS設定を記載.
+ */
+
+
+/** 文字フォントが赤くならないように設定 */
+code {
+	 color: black !important;
+}
+
+/** 画像サイズを設定 */
+#level5_img, #level6_img{
+	width: 100%;
+}
+
+/** 入力例＆出力例ボックス用 */
+.content-box-e {
+	min-width: 250px;
+	margin: 5px;
+	padding: 10px;
+	border-radius: 3px;
+	background-color: #F0EEEE;
+	border: 1px solid #C7C7C7;
+}
+
+/** 問題ボックス用 */
+.content-box-q {
+	min-width: 250px;
+	margin: 5px;
+	padding: 16px 48px 16px 48px;
+	border-radius: 3px;
+	background-color: #FFFFFF;
+	border: 1px solid #C7C7C7;
+}
+
+/** 入力ボックス用(黄色) */
+.content-box-ex {
+	min-width: 250px;
+	margin: 5px;
+	padding: 10px;
+	border-radius: 3px;
+	background-color: rgb(255 250 142);
+	border: 1px solid #C7C7C7;
+}
+
+ol, ul{
+    padding: 0 10px!important;
+}

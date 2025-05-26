@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+	<link rel="stylesheet" th:href="@{/css/dojo.css}" href="../static/css/dojo.css">
+	
+	<div th:replace="~{common :: common-script}"></div>
+	<div th:replace="~{common :: common-head}"></div>
+	
+	<body>
+	
+		<div th:replace="~{common :: common-nav}"></div>
+		<div class="container-fluid header-up">
+			<div class="row">
+				<nav th:replace= "~{common :: common-sidebar}"></nav>
+				
+		      	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+					<h1>素数入力画面</h1>
+					<div class="row justify-content-md-center">
+						<div class="col-md-8">
+							<form method="post" th:action="@{/prime}">
+								<div class="input-group">
+									<span class="input-group-text">数値</span>
+									<input type="text=" id="prime" class="form-control" name="value">
+									<span class="input-group-btn">
+										<button type="submit" class="btn btn-success mx-auto btnx-lime-non">送信</button>
+									</span>
+								</div>
+							</form>
+							
+						</div>
+					</div>
+				</main>
+			</div>	
+		</div>
+	</body>
+</html>

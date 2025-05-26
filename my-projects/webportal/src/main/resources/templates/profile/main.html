@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<link rel="stylesheet" th:href="@{/css/profile.css}" href="../static/css/profile.css">
+
+<div th:replace="~{common :: common-script}"></div>
+<div th:replace="~{common :: common-head}"></div>
+
+<body>
+
+ <div th:replace="~{common :: common-nav}"></div>
+ <div class="container-fluid header-up">
+  <div class="row">
+   <nav th:replace="~{common :: common-sidebar}"></nav>
+
+   <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <h1>マイプロフィール</h1>
+    <div class="row justify-content-md-center">
+     <div class="col-lg-8">
+      <div class="content-box">
+
+       <div
+        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col-auto d-none d-lg-block">
+         <img class="bd-placeholder-img" width="200" height="250" th:src="${profile.image}">
+        </div>
+        <div class="col p-4 d-flex flex-column position-static">
+         <strong class="d-inline-block mb-2 text-primary" th:text="${profile.classNumber}">就活中</strong>
+         <h3 class="mb-0" th:text="${profile.userName}">春田和也</h3>
+         <div class="mb-1 text-muted" th:text="${profile.userKana}">じょうほう　たろう</div>
+         <p class="card-text mb-auto" th:text="${profile.commentText}">ここはコメントです</p>
+        </div>
+       </div>
+       
+       <form method="get" class="d-flex justify-content-end" th:action="@{/profile/update}">
+        <button type="submit" class="btn btn-success mx-auto btnx-lime-non">更新</button>
+       </form>
+      </div>
+     </div>
+    </div>
+   </main>
+  </div>
+ </div>
+</body>
+
+</html>

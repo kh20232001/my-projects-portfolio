@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<!-- 共通ヘッダ -->
+<head th:fragment="common-head">
+	<meta charset="UTF-8">
+	<title>WebPortal-Dashboard</title>
+	
+	<!-- モバイル設定 -->
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="manifest" th:href="@{/css/manifest.json}" crossorigin="use-credentials">
+	<meta name="application-name" content="WebPortal">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="WebPortal">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	<!-- アイコン設定 -->
+	<link rel="icon" th:href="@{/favicon.ico}" sizes="16x16" href="../static/favicon.ico">
+	<link rel="shortcut icon" th:href="@{/favicon.ico}">
+	<link rel="apple-touch-icon" th:href="@{/favicon.ico}">
+	<link rel="apple-touch-icon" th:href="@{/favicon.ico}" sizes="192x192">
+	<link rel="apple-touch-icon" th:href="@{/favicon.ico}" sizes="128x128">
+	
+	<!-- スタイル設定 -->
+	<link rel="stylesheet" th:href="@{/css/ress.css}" href="../static/css/ress.css">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css">
+	<link rel="stylesheet" th:href="@{/css/common.css}" href="../static/css/common.css">
+	<link rel="stylesheet" th:href="@{/css/sidebar.css}" href="../static/css/sidebar.css">
+	<link rel="stylesheet" th:href="@{/css/navbar.css}" href="../static/css/navbar.css">
+	
+</head>
+<!-- 共通ヘッダはここまで -->
+
+<!-- スクリプト設定 -->
+<div th:fragment="common-script">
+	<script th:src="@{/js/bootstrap.bundle.min.js}" src="../static/js/bootstrap.bundle.min.js"></script>
+</div>
+<!-- スクリプト設定はここまで -->
+		<!-- ナビゲーションヘッダ 管理者用-->
+	<nav class="navbar navbar-expand-sm navbar-dark btn-dark fixed-top" th:fragment="common-admin-nav">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/}"><img class="logo-img"
+				th:src="@{/img/navbar/webportal.png}" src="../static/img/navbar/webportal.png"><strong>WebPortal.com</strong></a>
+			<span>管理者用</span>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="header-item"><a class="nav-link active"
+						aria-current="page" href="#"></a></li>
+				</ul>
+				<ul class="d-flex navbar-nav">
+					<li class="header-item px-2"><a class="nav-link active"
+						th:href="@{/change}"><img class="config-img"
+							th:src="@{/img/navbar/notice.svg}" src="../static/img/navbar/notice.svg">通知
+					<span class="badge rounded-pill bg-warning text-white">2</span>
+					</a></li>
+					
+					<li class="header-item px-2"><a class="nav-link active"
+						th:href="@{/change}"><img class="config-img"
+							th:src="@{/img/navbar/profile.svg}" src="../static/img/navbar/profile.svg">プロフィール
+					</a></li>
+					<li class="header-item px-2"><a class="nav-link active"
+						th:href="@{/logout}"><img class="config-img"
+							th:src="@{/img/navbar/exit.svg}" src="../static/img/navbar/exit.svg">ログアウト
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>	
+	<!-- ナビゲーションヘッダ -->
+	<nav class="navbar navbar-expand-sm navbar-dark main-color fixed-top" th:fragment="common-nav">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/}"><img class="logo-img"
+				th:src="@{/img/navbar/webportal2.png}" src="../static/img/navbar/webportal.png"><strong>WebPortal.com</strong></a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="header-item"><a class="nav-link active"
+						aria-current="page" href="#"></a></li>
+				</ul>
+				<ul class="d-flex navbar-nav">
+					<li class="header-item px-2"><a class="nav-link active"
+						th:href="@{/change}"><img class="config-img"
+							th:src="@{/img/navbar/notice.svg}" src="../static/img/navbar/notice.svg">通知
+					<span class="badge rounded-pill bg-warning text-white">2</span>
+					</a></li>
+					
+					<li class="header-item px-2"><a class="nav-link active"
+						th:href="@{/change}"><img class="config-img"
+							th:src="@{/img/navbar/profile.svg}" src="../static/img/navbar/profile.svg">プロフィール
+					</a></li>
+					<li class="header-item px-2"><a class="nav-link active"
+						th:href="@{/logout}"><img class="config-img"
+							th:src="@{/img/navbar/exit.svg}" src="../static/img/navbar/exit.svg">ログアウト
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- ナビゲーションヘッダ 一般用はここまで-->
+
+	<!-- サイドバー -->
+			<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse" th:fragment="common-sidebar">
+				<div class="position-sticky pt-3 sidebar-sticky">
+						<h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase"> <span>一般機能</span></h3>
+						<ul class="nav flex-column">
+								<li class="nav-item"> <a class="nav-link active" aria-current="page" href="index.html" th:href="@{/}">
+				                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home-2" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>   <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>   <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>   <path d="M10 12h4v4h-4z"></path></svg>
+				                ダッシュボード
+				              </a> </li>
+								<li class="nav-item"> <a class="nav-link" href="dojo.html" th:href="@{/dojo}">
+				                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-3d-cube-sphere" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>  <path d="M6 17.6l-2 -1.1v-2.5" />  <path d="M4 10v-2.5l2 -1.1" />  <path d="M10 4.1l2 -1.1l2 1.1" />  <path d="M18 6.4l2 1.1v2.5" />  <path d="M20 14v2.5l-2 1.12" />  <path d="M14 19.9l-2 1.1l-2 -1.1" />  <path d="M12 12l2 -1.1" />  <path d="M18 8.6l2 -1.1" />  <path d="M12 12l0 2.5" />  <path d="M12 18.5l0 2.5" />  <path d="M12 12l-2 -1.12" />  <path d="M6 8.6l-2 -1.1" /></svg>
+				                アルゴリズム道場
+				              </a> </li>
+								<li class="nav-item"> <a class="nav-link" href="bmi.html" th:href="@{/bmi}">
+				                <img th:src="@{/img/sidebar/bmi.svg}" src ="../static/img/sidebar/bmi.svg"  class="feather feather-shopping-cart align-text-bottom"/>
+				                BMI計算
+				              </a> </li>
+				              <li class="nav-item"> <a class="nav-link" href="prime.html" th:href="@{/prime}">
+				                <img th:src="@{/img/sidebar/bmi.svg}" src ="../static/img/sidebar/bmi.svg"  class="feather feather-shopping-cart align-text-bottom"/>
+				                素数検索	
+				              </a> </li>
+				              <li class="nav-item"> <a class="nav-link" href="factorization.html" th:href="@{/factorization}">
+				                <img th:src="@{/img/sidebar/bmi.svg}" src ="../static/img/sidebar/bmi.svg"  class="feather feather-shopping-cart align-text-bottom"/>
+				                素因数分解	
+				              </a> </li>
+								<li class="nav-item"> <a class="nav-link" href="dog.html" th:href="@{/dog}">
+				                <img th:src="@{/img/sidebar/dog.svg}" src ="../static/img/sidebar/dog.svg"  class="feather feather-shopping-cart align-text-bottom"/>
+				                ワンちゃん検索
+				              </a> </li>
+				              <li class="nav-item"> <a class="nav-link" href="zipcode.html" th:href="@{/zip}">
+				                <img th:src="@{/img/sidebar/zipcode.svg}" src ="../static/img/sidebar/zipcode.svg"  class="feather feather-shopping-cart align-text-bottom"/>
+				                郵便番号検索
+				              </a> </li>
+								<li class="nav-item"> <a class="nav-link" href="weather.html" th:href="@{/weather}">
+				                <img th:src="@{/img/sidebar/weather.svg}" src ="../static/img/sidebar/weather.svg"  class="feather feather-shopping-cart align-text-bottom"/>
+				                お天気情報
+				              </a> </li>
+								<li class="nav-item"> <a class="nav-link" href="task.html" th:href="@{/task}">
+				                <img th:src="@{/img/sidebar/task.svg}" src ="../static/img/sidebar/task.svg"  class="feather feather-shopping-cart align-text-bottom"/>
+				                タスク管理
+				              </a> </li>
+						</ul>
+						<div sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_TOP')">
+						<h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase"> <span>管理者機能</span> </h3>
+						
+						
+							<ul class="nav flex-column mb-2">
+									<li class="nav-item"> <a class="nav-link" href="list.html" th:href="@{/user/list}">
+					                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text align-text-bottom" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+					                ユーザ管理機能
+					              </a> </li>
+							</ul>
+						</div>
+				</div>
+			</nav>
+			<!-- サイドバーはここまで -->
+
+<body>
+
+</body>
+</html>
+

@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/*
+ サイドバーのCSS設定を記載.
+ */
+ 
+.feather {
+  width: 16px;
+  height: 16px;
+}
+
+/* * サイドバー */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  /* ナビゲーションバーの背面 */
+  padding: 40px 8px 0 24px;
+  /* ナビゲーションバーの高さ */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
+}
+
+.sidebar-sticky {
+  height: calc(100vh - 48px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* ビューポートがコンテンツより短い場合、スクロール可能なコンテンツ */
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: var(--bs-secondary-color);
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: var(--bs-tertiary-color);
+}
+
+.sidebar .nav-link.active {
+  color: var(--bs-primary);
+}
+
+.sidebar .nav-link:hover .feather, .sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+}
+
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+}

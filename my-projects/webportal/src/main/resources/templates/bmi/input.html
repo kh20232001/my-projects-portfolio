@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+	<link rel="stylesheet" th:href="@{/css/dojo.css}" href="../static/css/dojo.css">
+	
+	<div th:replace="~{common :: common-script}"></div>
+	<div th:replace="~{common :: common-head}"></div>
+	
+	<body>
+	
+		<div th:replace="~{common :: common-nav}"></div>
+		<div class="container-fluid header-up">
+			<div class="row">
+				<nav th:replace= "~{common :: common-sidebar}"></nav>
+				
+		      	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+					<h1>BMI入力画面</h1>
+					<div class="row justify-content-md-center">
+						<div class="col-md-8">
+						
+							<form method="post" th:action="@{/bmi}">
+								<div class="input-group">
+									<span class="input-group-text">身長(cm)</span>
+									<input type="text" id="height" class="form-control" name="cm">
+									<span class="input-group-text">体重(kg)</span>
+									<input type="text=" id="weight" class="form-control" name="kg">
+									<span class="input-group-btn">
+										<button type="submit" class="btn btn-success mx-auto btnx-lime-non" onClick="return check()">計算</button>
+									</span>
+								</div>
+							</form>
+							
+						</div>
+					</div>
+				</main>
+			</div>	
+		</div>
+		<script th:src="@{/js/bmi.js}" src="../static/js/bmi.js"></script>
+	</body>
+</html>

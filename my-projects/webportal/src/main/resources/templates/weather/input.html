@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<link rel="stylesheet" th:href="@{/css/dojo.css}"
+	href="../static/css/dojo.css">
+
+<div th:replace="~{common :: common-script}"></div>
+<div th:replace="~{common :: common-head}"></div>
+
+<body>
+
+	<div th:replace="~{common :: common-nav}"></div>
+	<div class="container-fluid header-up">
+		<div class="row">
+			<nav th:replace="~{common :: common-sidebar}"></nav>
+
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<h1>天気予報入力画面</h1>
+				<div class="row justify-content-md-center">
+					<div class="row justify-content-md-center">
+						<div class="col-md-8">
+							<form method="post" th:action="@{/weather}">
+								<div class="input-group">
+									<span class="input-group-text">地域</span>
+									<select id="citycode" class="form-control" name="citycode">
+										<option value="011000">稚内</option>
+										<option value="012010">旭川</option>
+										<option value="012020">留萌</option>
+										<option value="013010">網走</option>
+										<option value="013020">北見</option>
+										<option value="013030">紋別</option>
+										<option value="014010">根室</option>
+										<option value="014020">釧路</option>
+										<option value="014030">帯広</option>
+										<option value="015010">室蘭</option>
+										<option value="015020">浦河</option>
+										<option value="016010">札幌</option>
+										<option value="016020">岩見沢</option>
+										<option value="016030">倶知安</option>
+										<option value="017010">函館</option>
+										<option value="017020">江差</option>
+
+									</select>
+									<span class="input-group-btn">
+										<button type="submit" class="btn btn-success mx-auto btnx-lime-non" onclick="return check()">送信</button>
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+			<script th:src="@{/js/weather.js}" src="../static/js/weather.js"></script>
+
+</body>
+</html>

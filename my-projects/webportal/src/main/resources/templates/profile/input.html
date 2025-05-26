@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<link rel="stylesheet" th:href="@{/css/profile.css}" href="../static/css/profile.css">
+
+<div th:replace="~{common :: common-script}"></div>
+<div th:replace="~{common :: common-head}"></div>
+
+<body>
+
+ <div th:replace="~{common :: common-nav}"></div>
+ <div class="container-fluid header-up">
+  <div class="row">
+   <nav th:replace="~{common :: common-sidebar}"></nav>
+
+   <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <h1>プロフィール登録</h1>
+    <div class="row justify-content-md-center">
+     <div class="col-lg-8">
+      <div class="content-box">
+       <form method="post" th:action="@{/profile/input}">
+        <div>
+          <label for="title" class="form-label">名前*</label>
+         <input type="text" class="form-control" name="name" placeholder="春田和也">
+        </div>
+        <br>
+        <div>
+         <label for="kana" class="form-label">かな*</label>
+         <input type="text" class="form-control" name="kana" placeholder="じょうほう　たろう">
+         <div id="kanaHelp" class="form-text">ひらがなで入力してください</div>
+        </div>
+        <br>
+        <div>
+          <label for="classNo" class="form-label">クラス番号*</label>
+         <input type="text" class="form-control" name="classNo" placeholder="S3A100">
+        </div>
+        <br>
+        <div>
+          <label for="url" class="form-label">イメージ画像URL*</label>
+         <input type="text" class="form-control" name="url" placeholder="https://～">
+        </div>
+        <br>
+        <div>
+         <label for="comment" class="form-label">コメント*</label>
+         <textarea class="form-control" name="comment" rows="8"></textarea>
+         <br>
+         <span class="d-flex justify-content-end">
+          <button id="submit" type="submit" class="btn btn-warning">作成</button>
+         </span>
+        </div>
+       </form>
+      </div>
+     </div>
+    </div>
+   </main>
+  </div>
+ </div>
+</body>
+</html>

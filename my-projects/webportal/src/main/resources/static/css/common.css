@@ -1,0 +1,85 @@
+@charset "UTF-8";
+/*
+ 共通のCSS設定を記載.
+ */
+ 
+html {
+	position: relative;
+}
+
+body {
+	/* フォントの設定 */
+	font-family: -apple-system,Segoe UI,Helvetica Neue,Hiragino Kaku Gothic ProN,"メイリオ",meiryo,sans-serif;
+	/* borderとpaddingの領域を含めないでサイズ指定可能に */
+	box-sizing: border-box;
+}
+
+h1,h2,h3,h4 {
+	/* 太文字 */
+	font-weight: bolder;
+}
+
+h2 {
+	/* 中央寄せ */
+	text-align: center;
+}
+
+img {
+	/* 配置した画像のサイズがボックス範囲からはみ出る時に自動的に縮小 */
+	max-width: 100%;
+	/* 縮小する幅に合わせて縦幅も調整 */
+	height: auto;
+	/* 画像と他要素の間にスキマ発生を抑止 */
+	vertical-align: bottom;
+}
+
+.right {
+	text-align: right;
+}
+
+.container {
+	/* 上部に余白 */
+	margin-top: 10px;
+}
+
+/* コンテントボックス(灰色) */
+.content-box {
+	min-width: 250px;
+	margin: 5px;
+	padding: 10px;
+	border-radius: 3px;
+	background-color: #F0EEEE;
+	border: 1px solid #C7C7C7;
+}
+
+ul {
+	/* 点(・)を非表示 */
+	list-style: none;
+}
+
+/* サイトのメインカラー */
+.main-color {
+	background-color: blue !important;
+}
+
+/* サイトのメインフォントカラー */
+.title-font {
+	color: #64C016;
+}
+
+/* 独自ボタン */
+.btnx-lime-non {
+	color:  #64C016;
+	background: #FFFFFF;
+	border: 2px solid #64C016;
+}
+
+/* 独自ボタンフォーカス時 */
+.btnx-lime {
+	background: #64C016;
+	border: 2px solid #64C016;
+}
+
+.margin-top {
+	margin-top: 32px;
+}

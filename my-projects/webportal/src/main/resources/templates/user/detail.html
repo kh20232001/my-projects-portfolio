@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<div th:replace="~{common :: common-script}"></div>
+<div th:replace="~{common :: common-head}"></div>
+
+<body>
+
+	<div th:replace="~{common :: common-admin-nav}"></div>
+	<div class="container-fluid header-up">
+		<div class="row">
+			<nav th:replace="~{common :: common-sidebar}"></nav>
+
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<h1>ユーザ管理画面</h1>
+				<div class="row justify-content-md-center">
+					<div class="col-lg-9">
+						<form method="post" th:action="@{/user/update}" th:object="${updateUserForm}" class="needs-validation">
+
+							<div class="mb-3">
+								<label class="fw-bold" for="userId">ユーザID(メールアドレス)</label>
+									<p class="view-mail" th:text="*{userId}"></p>
+								<input type="hidden" name="userId" th:value="*{userId}">
+							</div>
+		
+
+							<div class="mb-3">		
+								<label class="fw-bold" for="password">パスワード</label>
+								<div class="form-group input-box position-relative">
+									<input type="password" class="form-control" name="password" th:field="*{password}" th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'">
+									<div class="invalid-tooltip" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+								</div>
+								<div id="passwordHelp" class="form-text">※未入力の場合、前のパスワードを維持します</div>
+							</div>
+							
+							<div class="mb-3">
+								<label class="fw-bold" for="username">ユーザ名</label>
+								<div class="form-group input-box position-relative">
+									<input type="text" class="form-control" name="userName" th:field="*{userName}" th:classappend="${#fields.hasErrors('userName')} ? 'is-invalid'">
+									<div class="invalid-tooltip" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></div>
+								</div>
+								<div id="passwordHelp" class="form-text">※2文字以上かつ50文字以下で入力してください</div>
+							</div>
+								
+							<div class="row">
+								<div class="col-6">
+									<div class="mb-3">
+										<label class="fw-bold" for="role">権限設定</label>
+										<div class="form-group input-box">
+											<div th:classappend="${#fields.hasErrors('role')} ? 'is-invalid'">
+												<input type="radio" class="form-check-input" id="role1" name="role" th:field="*{role}" value="ROLE_ADMIN" th:classappend="${#fields.hasErrors('role')} ? 'is-invalid'">
+												<label class="form-check-label" for="role1">管理</label>
+											</div>
+											<div th:classappend="${#fields.hasErrors('role')} ? 'is-invalid'">
+												<input type="radio" class="form-check-input" id="role2" name="role" th:field="*{role}" value="ROLE_TOP" th:classappend="${#fields.hasErrors('role')} ? 'is-invalid'">
+												<label class="form-check-label" for="role2">上位</label>
+											</div>
+											<div th:classappend="${#fields.hasErrors('role')} ? 'is-invalid'">
+												<input type="radio" class="form-check-input" id="role3" name="role" th:field="*{role}" value="ROLE_GENERAL" th:classappend="${#fields.hasErrors('role')} ? 'is-invalid'">
+												<label class="form-check-label" for="role3">一般</label>
+											</div>
+											<div class="invalid-feedback" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
+										</div>
+									</div>
+								</div>
+		
+								<div class="col-6">
+									<div class="mb-3">
+										<label class="fw-bold" for="role">有効性</label>
+										<div class="form-group input-box">
+											<div th:classappend="${#fields.hasErrors('enabled')} ? 'is-invalid'">
+												<input type="radio" class="form-check-input" name="enabled" th:field="*{enabled}" value="true" id="enabled1" th:classappend="${#fields.hasErrors('enabled')} ? 'is-invalid'">
+												<label class="form-check-label" for="enabled1">有効</label>
+											</div>
+											<div th:classappend="${#fields.hasErrors('enabled')} ? 'is-invalid'">
+												<input type="radio" class="form-check-input" name="enabled" th:field="*{enabled}" value="false" id="enabled2" th:classappend="${#fields.hasErrors('enabled')} ? 'is-invalid'">
+												<label class="form-check-label" for="enabled2">無効</label>
+											</div>
+											<div class="invalid-feedback" th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<button class="btn btn-primary" type="submit" name="update">更新</button>
+						</form>
+							<hr>
+						<form method="post" th:action="@{/user/delete}" th:object="${updateUserForm}">
+							<input type="hidden" th:value="*{userId}" name="userId">
+							<button class="btn btn-danger" type="submit" name="delete">削除</button>
+						</form>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+	<link rel="stylesheet" th:href="@{/css/dojo.css}" href="../static/css/dojo.css">
+	
+	<div th:replace="~{common :: common-script}"></div>
+	<div th:replace="~{common :: common-head}"></div>
+	
+	<body>
+	
+		<div th:replace="~{common :: common-nav}"></div>
+		<div class="container-fluid header-up">
+			<div class="row">
+				<nav th:replace= "~{common :: common-sidebar}"></nav>
+				
+		      	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+					<h1>ワンちゃん入力画面</h1>
+					<div class="row justify-content-md-center">
+						<div class="col-md-8">
+							<form method="post" th:action="@{/dog}">
+								<div class="input-group">
+									<span class="input-group-text">犬種</span>
+									<select id="pet-select" class="form-control" name="dog">
+										<option value="affenpinscher">アフェンピンシャー</option>
+										<option value="african">アフリカン</option>
+										<option value="airedale">エアデール</option>
+										<option value="akita">秋田犬</option>
+										<option value="appenzeller">アッペンツェル</option>
+										<option value="australian/shepherd">オーストラリアン・シェパード</option>
+										<option value="basenji">バセンジー</option>
+										<option value="beagle">ビーグル</option>
+										<option value="bluetick">ブルーティック</option>
+										<option value="borzoi">ボルゾイ</option>
+										<option value="bouvier">ブーヴィエ</option>
+										<option value="boxer">ボクサー</option>
+										<option value="brabancon">ブラバンソン</option>
+										<option value="briard">ブリアード</option>
+										<option value="buhund/norwegian">ノルウェジアン・ブーフンド</option>
+										<option value="bulldog/boston">ボストン・ブルドッグ</option>
+										<option value="bulldog/english">イングリッシュ・ブルドッグ</option>
+										<option value="bulldog/french">フレンチ・ブルドッグ</option>
+										<option value="bullterrier/staffordshire">スタッフォードシャー・ブルテリア</option>
+										<option value="cattledog/australian">オーストラリアン・キャトルドッグ</option>
+										<option value="chihuahua">チワワ</option>
+										<option value="chow">チャウ</option>
+										<option value="clumber">クランバー</option>
+										<option value="cockapoo">コッカプー</option>
+										<option value="collie/border">ボーダー・コリー</option>
+										<option value="coonhound">クーンハウンド</option>
+										<option value="corgi/cardigan">カーディガン・ウェルシュ・コーギー</option>
+										<option value="cotondetulear">コトン・ド・テュレア</option>
+										<option value="dachshund">ダックスフンド</option>
+										<option value="dalmatian">ダルメシアン</option>
+										<option value="dane/great">グレート・デーン</option>
+										<option value="deerhound/scottish">スコティッシュ・ディアハウンド</option>
+										<option value="dhole">ドール</option>
+										<option value="dingo">ディンゴ</option>
+										<option value="doberman">ドーベルマン</option>
+										<option value="elkhound/norwegian">ノルウェーグianエルクハウンド</option>
+										<option value="entlebucher">エントレブッハー</option>
+										<option value="eskimo">エスキモ</option>
+										<option value="finnish/lapphund">フィンランド・ラップフンド</option>
+										<option value="frise/bichon">ビション・フリーゼ</option>
+										<option value="germanshepherd">ジャーマン・シェパード</option>
+										<option value="greyhound/italian">イタリアン・グレイハウンド</option>
+										<option value="groenendael">グローネンダール</option>
+										<option value="havanese">ハバニーズ</option>
+										<option value="hound/afghan">アフガン・ハウンド</option>
+										<option value="hound/basset">バセット・ハウンド</option>
+										<option value="hound/blood">ブラッド・ハウンド</option>
+										<option value="hound/english">イングリッシュ・ハウンド</option>
+										<option value="hound/ibizan">イビサン・ハウンド</option>
+										<option value="hound/plott">プロット・ハウンド</option>
+										<option value="hound/walker">ウォーカー・ハウンド</option>
+										<option value="husky">ハスキー</option>
+										<option value="keeshond">キースホンド</option>
+										<option value="kelpie">ケルピー</option>
+										<option value="komondor">コモンドール</option>
+										<option value="kuvasz">クバース</option>
+										<option value="labradoodle">ラブラドゥードル</option>
+										<option value="labrador">ラブラドール</option>
+										<option value="leonberg">レオンベルグ</option>
+										<option value="lhasa">ラサ</option>
+										<option value="malamute">マラミュート</option>
+										<option value="malinois">マリノア</option>
+										<option value="maltese">マルチーズ</option>
+										<option value="mastiff/bull">ブル・マスティフ</option>
+										<option value="mastiff/english">イングリッシュ・マスティフ</option>
+										<option value="mastiff/tibetan">チベタン・マスティフ</option>
+										<option value="mexicanhairless">メキシカン・ヘアレス</option>
+										<option value="mix">ミックス</option>
+										<option value="mountain/bernese">バーニーズ・マウンテン・ドッグ</option>
+										<option value="mountain/swiss">スイス・マウンテン・ドッグ</option>
+										<option value="newfoundland">ニューファンドランド</option>
+										<option value="otterhound">オッターハウンド</option>
+										<option value="ovcharka/caucasian">コーカシアン・オフチャルカ</option>
+										<option value="papillon">パピヨン</option>
+										<option value="pekinese">ペキニーズ</option>
+										<option value="pembroke">ペンブローク</option>
+										<option value="pinscher/miniature">ミニチュア・ピンシャー</option>
+										<option value="pitbull">ピットブル</option>
+										<option value="pointer/german">ジャーマン・ポインター</option>
+										<option value="pointer/germanlonghair">ジャーマン・ロングヘアード・ポインター</option>
+										<option value="pomeranian">ポメラニアン</option>
+										<option value="poodle/medium">ミディアム・プードル</option>
+										<option value="poodle/miniature">ミニチュア・プードル</option>
+										<option value="poodle/standard">スタンダード・プードル</option>
+										<option value="poodle/toy">トイ・プードル</option>
+										<option value="pug">パグ</option>
+										<option value="puggle">パグル</option>
+										<option value="pyrenees">ピレネー</option>
+										<option value="redbone">レッドボーン</option>
+										<option value="retriever/chesapeake">チェサピーク・ベイ・レトリーバー</option>
+										<option value="retriever/curly">カーリー・レトリーバー</option>
+										<option value="retriever/flatcoated">フラットコーテッド・レトリーバー</option>
+										<option value="retriever/golden">ゴールデン・レトリーバー</option>
+										<option value="ridgeback/rhodesian">ローデシアン・リッジバック</option>
+										<option value="rottweiler">ロットワイラー</option>
+										<option value="saluki">サルーキ</option>
+										<option value="samoyed">サモエド</option>
+										<option value="schipperke">シップ・パーク</option>
+										<option value="schnauzer/giant">ジャイアント・シュナウザー</option>
+										<option value="schnauzer/miniature">ミニチュア・シュナウザー</option>
+										<option value="segugio/italian">イタリアン・セグーヒオ</option>
+										<option value="setter/english">イングリッシュ・セッター</option>
+										<option value="setter/gordon">ゴードン・セッター</option>
+										<option value="setter/irish">アイリッシュ・セッター</option>
+										<option value="sharpei">シャーペイ</option>
+										<option value="sheepdog/english">イングリッシュ・シープドッグ</option>
+										<option value="sheepdog/shetland">シェットランド・シープドッグ</option>
+										<option value="shiba">柴</option>
+										<option value="shihtzu">シーズー</option>
+										<option value="spaniel/blenheim">ブレナム・スパニエル</option>
+										<option value="spaniel/brittany">ブリタニー・スパニエル</option>
+										<option value="spaniel/cocker">コッカー・スパニエル</option>
+										<option value="spaniel/irish">アイリッシュ・スパニエル</option>
+										<option value="spaniel/japanese">ジャパニーズ・スパニエル</option>
+										<option value="spaniel/sussex">サセックス・スパニエル</option>
+										<option value="spaniel/welsh">ウェルシュ・スパニエル</option>
+										<option value="spitz/japanese">ジャパニーズ・スピッツ</option>
+										<option value="springer/english">イングリッシュ・スプリンガー</option>
+										<option value="stbernard">セントバーナード</option>
+										<option value="terrier/american">アメリカン・テリア</option>
+										<option value="terrier/australian">オーストラリアン・テリア</option>
+										<option value="terrier/bedlington">ベドリントン・テリア</option>
+										<option value="terrier/border">ボーダー・テリア</option>
+										<option value="terrier/cairn">ケアン・テリア</option>
+										<option value="terrier/dandie">ダンディ・ディンモント・テリア</option>
+										<option value="terrier/fox">フォックス・テリア</option>
+										<option value="terrier/irish">アイリッシュ・テリア</option>
+										<option value="terrier/jack">ジャック・ラッセル・テリア</option>
+										<option value="terrier/kerryblue">ケリー・ブルー・テリア</option>
+										<option value="terrier/lakeland">レークランド・テリア</option>
+										<option value="terrier/norfolk">ノーフォーク・テリア</option>
+										<option value="terrier/norwich">ノーリッチ・テリア</option>
+										<option value="terrier/patterdale">パタデール・テリア</option>
+										<option value="terrier/russell">ラッセル・テリア</option>
+										<option value="terrier/scottish">スコティッシュ・テリア</option>
+										<option value="terrier/sealyham">シーリハム・テリア</option>
+										<option value="terrier/silky">シルキー・テリア</option>
+										<option value="terrier/tibetan">チベタン・テリア</option>
+										<option value="terrier/toy">トイ・テリア</option>
+										<option value="terrier/westhighland">ウェスト・ハイランド・ホワイト・テリア</option>
+										<option value="terrier/wheaten">ホイートン・テリア</option>
+										<option value="terrier/yorkshire">ヨークシャー・テリア</option>
+										<option value="vizsla">ヴィズラ</option>
+										<option value="weimaraner">ワイマラナー</option>
+										<option value="whippet">ウィペット</option>
+										<option value="wolfhound/irish">アイリッシュ・ウルフハウンド</option>
+									</select>
+									<span class="input-group-btn">
+										<button type="submit" class="btn btn-success mx-auto btnx-lime-non">送信</button>
+									</span>
+								</div>
+							</form>
+							
+						</div>
+					</div>
+				</main>
+			</div>	
+		</div>
+	</body>
+</html>

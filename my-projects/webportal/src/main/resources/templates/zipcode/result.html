@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<link rel="stylesheet" th:href="@{/css/dojo.css}"
+	href="../static/css/dojo.css">
+
+<div th:replace="~{common :: common-script}"></div>
+<div th:replace="~{common :: common-head}"></div>
+
+<body>
+
+	<div th:replace="~{common :: common-nav}"></div>
+	<div class="container-fluid header-up">
+		<div class="row">
+			<nav th:replace="~{common :: common-sidebar}"></nav>
+
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<h1>郵便番号結果画面</h1>
+				<div class="row justify-content-md-center">
+					<div class="col-lg-8">
+						<div class="content-box">
+
+							<table class="table table-light">
+								<thead>
+									<tr>
+										<th scope="col">項目</th>
+										<th scope="col">結果</th>
+									</tr>
+								</thead>
+								<tbody  th:each="zipCodeData : ${results.list}">
+									
+									<tr>
+										<th scope="row">郵便番号</th>
+										<td th:text="${zipCodeData.zipcode}">0030806</td>
+									</tr>
+									<tr>
+										<th scope="row">都道府県</th>
+										<td th:text="${zipCodeData.address1}">北海道</td>
+									</tr>
+									<tr>
+										<th scope="row">市区町村</th>
+										<td th:text="${zipCodeData.address2}">札幌市白石区</td>
+									</tr>
+									<tr>
+										<th scope="row">番地</th>
+										<td th:text="${zipCodeData.address3}">菊水6条</td>
+									</tr>
+									<tr>
+										<th scope="row">都道府県カナ</th>
+										<td th:text="${zipCodeData.kana1}">ﾎｯｶｲﾄﾞｳ</td>
+									</tr>
+									<tr>
+										<th scope="row">市区町村カナ</th>
+										<td th:text="${zipCodeData.kana2}">ｻｯﾎﾟﾛｼｼﾛｲｼｸ</td>
+									</tr>
+									<tr>
+										<th scope="row">番地カナ</th>
+										<td th:text="${zipCodeData.kana3}">ｷｸｽｲ6ｼﾞｮｳ</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</body>
+</html>

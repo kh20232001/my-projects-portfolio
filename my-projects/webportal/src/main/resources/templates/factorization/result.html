@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+	<link rel="stylesheet" th:href="@{/css/dojo.css}" href="../static/css/dojo.css">
+	
+	<div th:replace="~{common :: common-script}"></div>
+	<div th:replace="~{common :: common-head}"></div>
+
+	<body>
+
+	<div th:replace="~{common :: common-nav}"></div>
+		<div class="container-fluid header-up">
+			<div class="row">
+				<nav th:replace= "~{common :: common-sidebar}"></nav>
+				
+		      	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+					<h1>素因数分解結果画面</h1>
+					<div class="row justify-content-md-center">
+						<div class="col-lg-5" style="text-align: center;">
+							<div class="content-box" style="text-align: center;">
+								
+									<span th:text="${result.ans}"></span>
+								
+							</div>
+						</div>
+					</div>
+				</main>
+			</div>	
+		</div>
+	</body>
+</html>

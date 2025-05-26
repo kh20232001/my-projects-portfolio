@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<link rel="stylesheet" th:href="@{/css/dojo.css}"
+	href="../static/css/dojo.css">
+
+<div th:replace="~{common :: common-script}"></div>
+<div th:replace="~{common :: common-head}"></div>
+
+<body>
+
+	<div th:replace="~{common :: common-nav}"></div>
+	<div class="container-fluid header-up">
+		<div class="row">
+			<nav th:replace="~{common :: common-sidebar}"></nav>
+
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<h1>天気予報結果画面</h1>
+				<div class="row justify-content-md-center">
+					<div class="col-lg-8" style="text-align: center;">
+						<div class="content-box">
+							<h1 th:text="${results.title}">天気</h1>
+							<ul th:each="result : ${results.forecasts}">
+								<li><h4>
+										<span th:text="${result.dateLabel}">今日</span>
+									</h4>
+								</li>
+								<li><span th:text="${result.telop}">晴のち曇</span></li>
+								<li><img th:src="${result.image}" /></li>
+							</ul>
+
+							<ul>
+								<li><span th:text="${results.description}">ここには気象情報に関する詳細な説明が入ります。</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</body>
+</html>

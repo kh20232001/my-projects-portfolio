@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="~{common :: common-head}"></head>
+<div th:replace="~{common :: common-script}"></div>
+
+<body>
+
+	<div th:replace="~{common :: common-admin-nav}"></div>
+
+	<div class="container-fluid header-up">
+		<div class="row">
+		<nav th:replace= "~{common :: common-sidebar}"></nav>
+      	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      	
+			<h1>ユーザ一覧画面</h1>
+				<div class="row justify-content-md-center">
+					<div class="col-md-11">
+						
+						<div class="alert alert-warning" role="alert" th:if="${message}" th:text="${message}"></div>
+						<div class="alert alert-danger" role="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+			
+						<table class="table table-borderless table-responsive">
+							<tr>
+								<th class="table-dark">ユーザID(メールアドレス)</th>
+								<th class="table-dark">ユーザ名</th>
+								<th class="table-dark">有効性</th>
+								<th class="table-dark">権限</th>
+								<th class="table-dark"></th>
+							</tr>
+							<tr th:each="user:${result.userList}" th:object="${user}">
+								<td class="table-light" th:text="*{userId}">taro@xxx.co.jp</td>
+								<td class="table-light" th:text="*{userName}">春田和也</td>
+								<td class="table-light" th:text="*{enabled} ? '有効':'無効'">true</td>
+								<div th:switch="*{role}">
+								<td class="table-light" th:case="ROLE_GENERAL">一般</td>
+								<td class="table-light" th:case="ROLE_TOP">上位</td>
+								<td class="table-light" th:case="ROLE_ADMIN">管理者</td>
+								<td class="table-light" th:case="*">権限エラー</td>
+								</div>
+								<td class="table-light">
+									<form method="get" th:action="@{/user/detail}">
+										<input type="hidden" name="userId" th:value="*{userId}">
+										<button type="submit" class="btn btn-success btnx-lime-non">詳細</button>
+									</form>
+								</td>
+							</tr>
+						</table>
+						<div class="row" sec:authorize="hasRole('ADMIN')">
+							<form class="col" method="get" th:action="@{/user/delete}">
+								<button type="submit" class="btn btn-danger">一括削除</button>
+							</form>
+							<form class="col d-flex justify-content-end" method="get" th:action="@{/user/insert}">
+								<button type="submit" class="btn btn-primary">ユーザ作成</button>
+							</form>
+						</div>
+						
+					</div>
+				</div>
+	     </main>
+		</div>
+	</div>
+</body>
+</html>

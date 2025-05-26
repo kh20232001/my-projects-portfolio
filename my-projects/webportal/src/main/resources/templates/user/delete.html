@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<div th:replace="~{common :: common-script}"></div>
+<div th:replace="~{common :: common-head}"></div>
+
+<body>
+
+	<div th:replace="~{common :: common-admin-nav}"></div>
+	<div class="container-fluid header-up">
+		<div class="row">
+			<nav th:replace="~{common :: common-sidebar}"></nav>
+
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<h1>ユーザ管理画面</h1>
+				<div class="row justify-content-md-center">
+					<div class="col-lg-9">
+						<div class="alert alert-success" role="alert" th:if="${message}" th:text="${message}"></div>
+						<div class="alert alert-danger" role="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+			
+			
+						<form class="col" method="post" th:action="@{/user/delete/bulk}">
+							<table class="table table-borderless table-responsive">
+								<tr>
+									<th class="table-dark"></th>
+									<th class="table-dark">ユーザID(メールアドレス)</th>
+									<th class="table-dark">ユーザ名</th>
+									<th class="table-dark">アカウント有効性</th>
+									<th class="table-dark">権限</th>
+									<th class="table-dark"></th>
+								</tr>
+								<tr th:each="user : ${userEntity.userList}" th:object="${user}">
+									<td class="table-light">
+										<input class="form-check-input" type="checkbox" name="users" th:value="*{userId}">
+									</td>
+									<td class="table-light" th:text="*{userId}"></td>
+									<td class="table-light" th:text="*{userName}"></td>
+									<td class="table-light" th:text="*{enabled}"></td>
+									<td class="table-light" th:text="*{role}"></td>
+									<td class="table-light">
+								</tr>
+							</table>
+							<button type="submit" class="btn btn-danger">一括削除</button>
+						</form>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</body>
+</html>
