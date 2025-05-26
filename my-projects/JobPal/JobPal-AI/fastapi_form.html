@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>合格不合格</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 class="title">合格不合格送信</h1>
+      <form id="dataForm" class="card">
+        <div class="card-inner">
+          <label for="text">受験報告 :</label>
+          <input type="text" id="text" name="text" required />
+        </div>
+        <button
+          id="button"
+          type="button"
+          onclick="submitData()"
+          class="card-btn"
+        >
+          送信
+        </button>
+      </form>
+      <div id="result" class="result"></div>
+      <!-- 結果表示用のdivを追加 -->
+    </div>
+
+    <script>
+      // Enterキーでフォームを送信する処理を追加
+      document.addEventListener("keypress", function (event) {
+        if (
+          event.key === "Enter" &&
+          !document.getElementById("button").disabled
+        ) {
+          submitData();
+        }
+      });
+
+      function submitData() {
+        const text = document.getElementById("text").value;
+
+        const data = JSON.stringify({
+          text: text,
+        });
+
+        fetch("http://127.0.0.1:8000/jobdetail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: data,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+            const result = JSON.stringify(data);
+            document.getElementById("result").innerText = "結果：" + result;
+            document.getElementById("result").style.display = "block";
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            document.getElementById("result").innerText =
+              "送信に失敗しました：" + error;
+            document.getElementById("result").style.display = "block";
+          });
+      }
+    </script>
+  </body>
+</html>
